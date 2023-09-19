@@ -136,10 +136,10 @@ Session也有一些潜在的问题。由于Session数据存储在服务器端，
 ## `springMVC`的工作原理？   
 
 ​												（地死拍车）
-首先向客户端发送HTTP请求到DispatcherServlet 			          
+首先向客户端发送HTTP请求到`DispatcherServlet` 			          
 然后通过`handlerMapping`(韩弄来卖配)查询到对应的`Controller`(肯凑乐)，然后直接返回对应的`ModelAndView ` （Vu）`DispatcherServlet` 查询` ModelAndView`，找到指定视图、视图将结果返回到客户端。
 
-## Spring MVC 流程？
+## `Spring MVC` 执行流程？
 
 1. 用户发送请求至前端控制器 `DispatcherServlet`。
 2. `DispatcherServlet` 收到请求调用` HandlerMapping` 处理器映射器。
@@ -199,11 +199,11 @@ Integer a = 200;
 
 通过使用`@Aspect`(啊死白车)来进行标识该类为切面类。`@Before` (b佛儿) 注解定义了一个前置通知,`@After` (啊特)注解定义了一个后置通知
 
-## Apache Shiro 的三大核心组件
+## `Apache Shiro` 的三大核心组件
 
 1. `Subject` (杀不杰)：当前用户的操作。
-2. `SecurityManager`(色Q里没力杰)：用于管理所有的 Subject。
-3. `Realms`（瑞子）：用于进行权限信息的验证。
+2. `SecurityManager`(塞Q里地没力杰)：用于管理所有的 Subject。
+3. `Realms`（瑞母子）：用于进行权限信息的验证。
 
 ## `Shiro `可以完成哪些工作？
 
@@ -509,11 +509,22 @@ Java集合框架是Java提供的一组接口和类，用于存储和操作一组
 ## 在Java中，可以通过两种方式创建和启动线程：
 
 1. 继承Thread类：创建一个继承自Thread类的子类，重写run()方法，然后创建该子类的实例，并调用start()方法启动线程。
-
 2. 实现Runnable接口：创建一个实现了Runnable接口的类，实现run()方法，然后创建该类的实例，并将其作为参数传递给Thread类的构造方法，最后调用start()方法启动线程。
 
-   ## 乐观锁和悲观锁
+## 乐观锁和悲观锁
 
-- 悲观锁假设会发生并发冲突，在访问资源之前先获取锁，而乐观锁假设并发冲突的概率较低，在更新操作时检查是否发生冲突。
-- 悲观锁在获取锁后其他事务必须等待，而乐观锁在发生冲突时需要处理冲突的情况。
-- 悲观锁适用于对数据一致性要求较高的场景，乐观锁适用于并发冲突概率较低的场景。
+悲观锁假设会发生并发冲突，在访问资源之前先获取锁，而乐观锁假设并发冲突的概率较低，在更新操作时检查是否发生冲突。
+
+悲观锁在获取锁后其他事务必须等待，而乐观锁在发生冲突时需要处理冲突的情况。
+
+悲观锁适用于对数据一致性要求较高的场景，乐观锁适用于并发冲突概率较低的场景。
+
+## `HashMap `和 `HashTable `的区别
+
+`HashMap` 和 `HashTable` 在线程安全性、处理 `null `值、继承关系、迭代器和扩容机制等方面存在区别。`HashMap` 是常用的实现类，适用于单线程环境或多线程环境下不需要显式同步的情况，而` HashTable` 则适用于需要线程安全性的场景。
+
+1. `线程安全性：HashTable 是线程安全的，而 HashMap 不是。HashTable 的方法是同步的，可以在多线程环境下使用，但在性能上会有一定的开销。而 HashMap 不是线程安全的，需要在多线程环境下进行额外的同步处理。`
+2. `Null 值：HashMap 允许键和值都为 null，而 HashTable 不允许。在 HashMap 中，可以将 null 作为键或值进行存储，而 HashTable 不允许 null 值，会抛出 NullPointerException。`
+3. `继承关系：HashMap 是 HashTable 的轻量级替代实现，它继承自 AbstractMap 类，而 HashTable 继承自 Dictionary 类。`
+4. `迭代器：HashMap 的迭代器是快速失败的（fail-fast），而 HashTable 的迭代器不是。当在迭代过程中对 HashMap 进行结构上的修改（添加或删除元素）时，会抛出 ConcurrentModificationException 异常。而 HashTable 的迭代器没有这个机制，可能会导致不确定的行为。`
+5. `初始容量和扩容机制：HashMap 的初始容量默认为 16，而 HashTable 的初始容量默认为 11。当元素数量超过容量的时候，HashMap 会自动进行扩容，而 HashTable 需要手动指定扩容的大小。`
